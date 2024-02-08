@@ -1,0 +1,9 @@
+# build artifacts
+/*.exe
+/*.pdb
+/*.o
+/scratch*
+# LLVM IR
+/*.ll
+# Taskfile checksums
+.task
