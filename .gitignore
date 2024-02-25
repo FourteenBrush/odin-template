@@ -2,7 +2,7 @@
 /*.exe
 /*.pdb
 /*.o
-/scratch*
+# TODO: add output name here
 # LLVM IR
 /*.ll
 # Taskfile checksums
