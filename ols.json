@@ -4,5 +4,6 @@
     "enable_semantic_tokens": true,
     "enable_hover": true,
     "enable_snippets": true,
+    "enable_fake_methods": true,
     "checker_args": "-strict-style -vet-unused"
 }
