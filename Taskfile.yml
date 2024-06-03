@@ -6,7 +6,7 @@ vars:
   COLLECTIONS: >-
   CHECK_FLAGS: "{{.COLLECTIONS}} -strict-style"
   FLAGS: "-out:{{.OUT_NAME}} {{.CHECK_FLAGS}}"
-  DEBUG_FLAGS: "-debug" # -use-separate-modules" TODO: is broken for now
+  DEBUG_FLAGS: "-debug -use-separate-modules"
 
 tasks:
   default:
