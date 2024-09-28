@@ -1,5 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/DanielGavin/ols/master/misc/odinfmt.schema.json",
     "sort_imports": false,
-    "newline_limit": 1
+    "newline_limit": 1,
+    "inline_single_stmt_case": true
 }
