@@ -8,3 +8,4 @@
 /*.S
 # Taskfile checksums
 .task
+/.odin-cache
