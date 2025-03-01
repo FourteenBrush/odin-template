@@ -10,3 +10,6 @@
 .task
 /.odin-cache
 *.spall
+
+Session.vim
+Sessionx.vim
