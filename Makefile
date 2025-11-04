@@ -7,7 +7,7 @@ endif
 
 SRC = src
 TESTS = tests
-COLLECTIONS = -collection:src=src -collection:lib=lib
+COLLECTIONS = -collection:src=$(SRC) -collection:lib=lib
 
 CC = odin
 BUILD_DIR = build
@@ -23,6 +23,7 @@ debug: $(PROG)
 
 test: CFLAGS += -define:ODIN_TEST_LOG_LEVEL=warning -define:ODIN_TEST_FANCY=false -define:ODIN_TEST_SHORT_LOGS=true -debug -keep-executable
 test:
+	@mkdir -p $(BUILD_DIR)
 	$(CC) test $(TESTS) $(CFLAGS)
 
 $(PROG):
