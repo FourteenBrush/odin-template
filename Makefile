@@ -21,7 +21,7 @@ release: $(PROG)
 debug: CFLAGS += -debug -o:none
 debug: $(PROG)
 
-test: CFLAGS += -define:ODIN_TEST_LOG_LEVEL=warning -debug -define:ODIN_TEST_FANCY=false -define:ODIN_TEST_SHORT_LOGS=true -debug -keep-executable
+test: CFLAGS += -define:ODIN_TEST_LOG_LEVEL=warning -define:ODIN_TEST_FANCY=false -define:ODIN_TEST_SHORT_LOGS=true -debug -keep-executable
 test:
 	$(CC) test $(TESTS) $(CFLAGS)
 
