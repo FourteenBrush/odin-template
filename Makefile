@@ -1,12 +1,17 @@
-rwildcard = $(wildcard $1) $(foreach d,$1,$(call rwildcard,$(addsuffix /$(notdir $d),$(wildcard $(dir $d)*))))
+ifeq ($(OS), Windows_NT)
+	# TODO: change program name
+	PROG = <program>.exe
+else
+	PROG = <program>
+endif
 
-PROG = <program name goes here>
 SRC = src
-SOURCE_FILES = $(call rwildcard,$(SRC)/*.odin)
 TESTS = tests
+COLLECTIONS = -collection:src=src -collection:lib=lib
 
 CC = odin
-CFLAGS = -out:$(PROG) -strict-style -vet-semicolon -vet-cast -vet-using-param
+BUILD_DIR = build
+CFLAGS = -out:$(BUILD_DIR)/$(PROG) -strict-style -vet-semicolon -vet-cast -vet-using-param $(COLLECTIONS)
 
 all: release
 
@@ -16,21 +21,22 @@ release: $(PROG)
 debug: CFLAGS += -debug -o:none
 debug: $(PROG)
 
-test: CFLAGS += -define:ODIN_TEST_LOG_LEVEL=warning -debug
-test: $(SOURCE_FILES)
+test: CFLAGS += -define:ODIN_TEST_LOG_LEVEL=warning -debug -define:ODIN_TEST_FANCY=false -define:ODIN_TEST_SHORT_LOGS=true -debug -keep-executable
+test:
 	$(CC) test $(TESTS) $(CFLAGS)
 
-$(PROG): $(SOURCE_FILES)
+$(PROG):
+	@mkdir -p $(BUILD_DIR)
 	$(CC) build $(SRC) $(CFLAGS)
 
 run: debug
-	./$(PROG)
+	./$(BUILD_DIR)/$(PROG)
 
-check: CFLAGS := $(filter-out -out:$(PROG),$(CFLAGS))
+check: CFLAGS := $(filter-out -out:$(BUILD_DIR)/$(PROG),$(CFLAGS))
 check:
 	$(CC) check $(SRC) $(CFLAGS) -debug
 
 clean:
-	-@rm $(PROG) 2>/dev/null
+	-@rm -r $(BUILD_DIR)
 
 .PHONY: release debug clean run test check
