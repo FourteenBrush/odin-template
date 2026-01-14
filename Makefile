@@ -31,7 +31,7 @@ $(PROG):
 	$(CC) build $(SRC) $(CFLAGS)
 
 run: debug
-	./$(BUILD_DIR)/$(PROG)
+	./$(BUILD_DIR)/$(PROG) $(ARGS)
 
 check: CFLAGS := $(filter-out -out:$(BUILD_DIR)/$(PROG),$(CFLAGS))
 check:
