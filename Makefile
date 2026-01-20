@@ -1,8 +1,7 @@
-ifeq ($(OS), Windows_NT)
-	# TODO: change program name
-	PROG = <program>.exe
-else
-	PROG = <program>
+PROG = <program>
+
+ifeq ($(OS),Windows_NT)
+	PROG := $(addsuffix .exe,$(PROG))
 endif
 
 SRC = src
