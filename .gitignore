@@ -2,7 +2,7 @@
 /*.exe
 /*.pdb
 /*.o
-# TODO: add output name here
+/build/
 # LLVM IR
 /*.ll
 /*.S
